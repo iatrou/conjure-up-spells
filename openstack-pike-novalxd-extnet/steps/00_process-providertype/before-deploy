@@ -16,11 +16,11 @@ if [[ "$JUJU_PROVIDERTYPE" == "localhost" ]]; then
     if [[ "$STORAGE_POOL" = "None" ]]; then
         STORAGE_POOL="default"
     fi
-    lxc network create conjureup0 \
-        ipv6.address=none \
-        ipv6.nat=false \
-        ipv4.address=10.101.0.1/24 \
-        ipv4.nat=true || printf "conjureup0 network already exists" && true
+#    lxc network create conjureup0 \
+#        ipv6.address=none \
+#        ipv6.nat=false \
+#        ipv4.address=10.101.0.1/24 \
+#        ipv4.nat=true || printf "conjureup0 network already exists" && true
 
     cat <<EOF> "$tmpfile"
 name: juju-${JUJU_MODEL}
@@ -39,7 +39,8 @@ devices:
     type: nic
   eth1:
     nictype: bridged
-    parent: conjureup0
+#    parent: conjureup0
+    parent: br0
     type: nic
   root:
     path: /

@@ -12,9 +12,9 @@ debug "Creating External Network"
 #                  -f 10.101.0.10:10.101.0.254 ext_net >> $NEUTRON_LOG 2>&1
 
 ./neutron-ext-net --network-type flat \
-                  -g 10.101.0.1 \
-                  -c 10.101.0.0/24 \
-                  -f 10.101.0.10:10.101.0.254 ext_net >> $NEUTRON_LOG 2>&1
+                  -g 192.168.1.1 \
+                  -c 192.168.1.0/24 \
+                  -f 192.168.1.225:192.168.1.240 ext_net >> $NEUTRON_LOG 2>&1
 
 debug "Creating Internal Network"
 ./neutron-tenant-net -t admin -r provider-router \
